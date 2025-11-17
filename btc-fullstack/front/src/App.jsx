@@ -1,0 +1,53 @@
+import "./App.css";
+import { useEffect, useState } from "react";
+import Form from "./component/Form.jsx";
+import List from "./component/List.jsx";
+import TodoList from "./component/TodoList.jsx";
+
+function App() {
+  const [message, setMessage] = useState();
+  useEffect(() => {
+    fetch("/api")
+      .then((res) => {
+        console.log(res);
+        return res.text();
+      })
+      .then((data) => setMessage(data));
+  }, []);
+  const [page, setPage] = useState("home");
+
+  return (
+    //初期画面(選択)
+    <>
+      {page === "home" ? (
+        <>
+          <h1>PC関係困りごと窓口</h1>
+          <h2>使いたい機能を選んでね</h2>
+          <button id="problem-form" onClick={() => setPage("form")}>
+            {" "}
+            困り事投稿
+          </button>
+          <button id="List-of-problems" onClick={() => setPage("list")}>
+            {" "}
+            困り事一覧
+          </button>
+          <button id="todo-list-privet" onClick={() => setPage("ToDo")}>
+            {" "}
+            個人タスク管理画面
+          </button>
+        </>
+      ) : page === "form" ? (
+        Form({ setPage })
+      ) : //Formコンポーネント画面に遷移
+      page === "list" ? (
+        List({ setPage })
+      ) : (
+        //Listコンポーネント画面に遷移
+        TodoList({ setPage })
+        //TodoListコンポーネント画面に遷移
+      )}
+    </>
+  );
+}
+
+export default App;
