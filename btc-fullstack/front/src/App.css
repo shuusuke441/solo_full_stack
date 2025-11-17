@@ -43,3 +43,10 @@
 
 #form-set {
 }
+
+.problem {
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}

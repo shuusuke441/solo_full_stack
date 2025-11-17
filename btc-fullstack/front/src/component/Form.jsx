@@ -1,10 +1,21 @@
 import { useState } from "react";
+import List from "./List";
 
-export default function Form({ setPage }) {
+export default function Form({ setPage, addProbelm }) {
   const [tilte, setTilte] = useState("");
   const [discription, setDiscription] = useState("");
   const [limmit, setLimmit] = useState("");
   const [image, setImage] = useState("");
+  //   const [problems, setProblems] = useState([]);
+  //   const handleAddProblem = () => {
+  //     if (problems === "") return;
+  //     addProbelm(problems);
+  //     setTilte("");
+  //     setDiscription("");
+  //     setLimmit("");
+  //     setImage("");
+  //   };
+
   return (
     <>
       <h1>困り事投稿画面</h1>
@@ -57,6 +68,11 @@ export default function Form({ setPage }) {
           />
         </label>{" "}
         <br />
+        <button
+        // onClick={handleAddProblem}
+        >
+          投稿
+        </button>
       </div>
 
       <button

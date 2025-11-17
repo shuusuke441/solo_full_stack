@@ -6,6 +6,7 @@ import TodoList from "./component/TodoList.jsx";
 
 function App() {
   const [message, setMessage] = useState();
+
   useEffect(() => {
     fetch("/api")
       .then((res) => {
