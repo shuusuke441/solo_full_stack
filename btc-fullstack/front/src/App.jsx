@@ -37,13 +37,13 @@ function App() {
           </button>
         </>
       ) : page === "form" ? (
-        Form({ setPage })
+        <Form setPage={setPage} />
       ) : //Formコンポーネント画面に遷移
       page === "list" ? (
-        List({ setPage })
+        <List setPage={setPage} />
       ) : (
         //Listコンポーネント画面に遷移
-        TodoList({ setPage })
+        <TodoList setPage={setPage} />
         //TodoListコンポーネント画面に遷移
       )}
     </>

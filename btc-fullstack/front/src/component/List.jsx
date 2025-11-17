@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function List({ setPage }) {
+  const [sample, setSample] = useState();
   return (
     <>
       <h1>困り事一覧</h1>
