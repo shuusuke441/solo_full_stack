@@ -1,20 +1,10 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Form from "./component/Form.jsx";
 import List from "./component/List.jsx";
 import TodoList from "./component/TodoList.jsx";
 
 function App() {
-  const [message, setMessage] = useState();
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => {
-        console.log(res);
-        return res.text();
-      })
-      .then((data) => setMessage(data));
-  }, []);
   const [page, setPage] = useState("home");
 
   return (

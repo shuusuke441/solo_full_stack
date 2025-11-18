@@ -1,25 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function List({ setPage, problems }) {
+export default function List({ setPage }) {
+  const [list, setList] = useState([]);
+
   //データの管理運営はこのコンポーネントでやりたい。だからここに書く。
 
-  //   const addProblem = (tilte) => setProblems([...problems, tilte]);
-  const dummy = [
-    {
-      id: 1,
-      titile: "PC",
-      description: "赤まむし",
-      limit: "2025-11-22",
-      image: null,
-    },
-    {
-      id: 2,
-      titile: "excel",
-      description: "ひつまぶし",
-      limit: "2025-11-21",
-      image: null,
-    },
-  ];
+  // const addProblem = () => setProblems([...problems, tilte]);
+
+  // const problemList = () => {
+  //   fetch("/api/problems").then((data) => {
+  //     data.json().then((data) => {
+  //       setList(data);
+  //     });
+  //   });
+  //   // if (!res.title) throw new Error(res.statusText);
+  // };
+
+  const problemList = async () => {
+    try {
+      const res = await fetch("/api/problems");
+      const data = await res.json();
+      console.log(data);
+      setList(data);
+      // if (!res.title) throw new Error(res.statusText);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    problemList();
+  }, []);
 
   return (
     <>
@@ -30,13 +41,14 @@ export default function List({ setPage, problems }) {
         自分の投稿だけ見ることもできるよ！
       </p>
       <br />
-      {dummy.map((item) => (
+      {list.map((item) => (
         <div className="problem" key={item.id}>
-          <h3>{item.titile}</h3>
+          <h3>{item.title}</h3>
           <p>{item.description}</p>
           <p>期限：{item.limit}</p>
         </div>
       ))}
+
       {/* <br />
       <ul>
         {problems.map((elm, index) => (

@@ -1,20 +1,37 @@
 import { useState } from "react";
 import List from "./List";
 
-export default function Form({ setPage, addProbelm }) {
+export default function Form({ setPage }) {
   const [tilte, setTilte] = useState("");
   const [discription, setDiscription] = useState("");
   const [limmit, setLimmit] = useState("");
   const [image, setImage] = useState("");
-  //   const [problems, setProblems] = useState([]);
-  //   const handleAddProblem = () => {
-  //     if (problems === "") return;
-  //     addProbelm(problems);
-  //     setTilte("");
-  //     setDiscription("");
-  //     setLimmit("");
-  //     setImage("");
-  //   };
+
+  function resetForm() {
+    setTilte("");
+    setDiscription("");
+    setLimmit("");
+    setImage("");
+  }
+
+  const handleAddProblem = async () => {
+    try {
+      await fetch("/api/problems", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: tilte,
+          description: discription,
+          image: image,
+        }),
+      });
+      resetForm();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -68,11 +85,7 @@ export default function Form({ setPage, addProbelm }) {
           />
         </label>{" "}
         <br />
-        <button
-        // onClick={handleAddProblem}
-        >
-          投稿
-        </button>
+        <button onClick={handleAddProblem}>投稿</button>
       </div>
 
       <button
