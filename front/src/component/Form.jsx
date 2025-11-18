@@ -1,5 +1,4 @@
 import { useState } from "react";
-import List from "./List";
 
 export default function Form({ setPage }) {
   const [title, setTilte] = useState("");
