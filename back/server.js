@@ -32,6 +32,7 @@ app.post("/api/problems", async (req, res) => {
       description: result.description,
       image: result.image,
       created_at: result.created_at,
+      limit: result.limit || null,
     })
     .returning("*");
 

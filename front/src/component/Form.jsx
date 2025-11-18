@@ -2,9 +2,9 @@ import { useState } from "react";
 import List from "./List";
 
 export default function Form({ setPage }) {
-  const [tilte, setTilte] = useState("");
-  const [discription, setDiscription] = useState("");
-  const [limmit, setLimmit] = useState("");
+  const [title, setTilte] = useState("");
+  const [description, setDiscription] = useState("");
+  const [limit, setLimmit] = useState("");
   const [image, setImage] = useState("");
 
   function resetForm() {
@@ -15,6 +15,7 @@ export default function Form({ setPage }) {
   }
 
   const handleAddProblem = async () => {
+    if (title === "" || description === "" || limit === "") return;
     try {
       await fetch("/api/problems", {
         method: "POST",
@@ -22,9 +23,10 @@ export default function Form({ setPage }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          title: tilte,
-          description: discription,
+          title: title,
+          description: description,
           image: image,
+          limit: limit,
         }),
       });
       resetForm();
@@ -47,8 +49,9 @@ export default function Form({ setPage }) {
           {" "}
           困りごとの題名：
           <input
+            className="form"
             type="text"
-            value={tilte}
+            value={title}
             onChange={(e) => {
               setTilte(e.target.value);
             }}
@@ -58,7 +61,8 @@ export default function Form({ setPage }) {
         <label>
           詳細内容：
           <textarea
-            value={discription}
+            className="form"
+            value={description}
             onChange={(e) => {
               setDiscription(e.target.value);
             }}
@@ -68,8 +72,9 @@ export default function Form({ setPage }) {
         <label>
           期限：
           <input
+            className="form"
             type="date"
-            value={limmit}
+            value={limit}
             onChange={(e) => setLimmit(e.target.value)}
           />
         </label>{" "}
@@ -77,6 +82,7 @@ export default function Form({ setPage }) {
         <label>
           添付：
           <input
+            className="form"
             type="file"
             value={image}
             onChange={(e) => {
@@ -85,7 +91,9 @@ export default function Form({ setPage }) {
           />
         </label>{" "}
         <br />
-        <button onClick={handleAddProblem}>投稿</button>
+        <button onClick={handleAddProblem} className="form">
+          投稿
+        </button>
       </div>
 
       <button
