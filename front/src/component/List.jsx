@@ -79,6 +79,7 @@ export default function List({ setPage }) {
             {item.title}
           </h3>
           <p>詳細内容：{item.description}</p>
+          <img src={item.image} alt="投稿されたイメージはありません"></img>
           <p>依頼日：{new Date(item.created_at).toLocaleDateString()}</p>
           {/* new Date(item.created_at).toLocaleDateString() new Dateで日型にしてるから、.toLocalDeteString()が使える、 */}
           <p>ジャンル：{item.genre}</p>

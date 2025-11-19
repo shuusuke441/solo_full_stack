@@ -4,22 +4,37 @@ export default function Form({ setPage }) {
   const [title, setTilte] = useState("");
   const [description, setDiscription] = useState("");
   const [limit, setLimmit] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [genre, setGenre] = useState("その他");
 
   const genreList = ["その他", "PC", "設備", "JS", "Node.js", "knex.js"];
+
+  //イメージBBの
 
   function resetForm() {
     setTilte("");
     setDiscription("");
     setLimmit("");
-    setImage("");
+    setImage(null);
   }
 
   const handleAddProblem = async () => {
     if (title === "" || description === "") return;
     else {
       try {
+        const key = import.meta.env.VITE_IMAGEBB_KEY;
+        // console.log(key);
+        const formData = new FormData();
+        formData.append("key", key);
+        formData.append("image", image === "" ? null : image);
+        const res = await fetch(`https://api.imgbb.com/1/upload?key=${key}`, {
+          method: "POST",
+          body: formData,
+        });
+        const data = await res.json();
+        const url = data.data.url;
+        // console.log(url);
+
         await fetch("/api/problems", {
           method: "POST",
           headers: {
@@ -28,7 +43,7 @@ export default function Form({ setPage }) {
           body: JSON.stringify({
             title: title,
             description: description,
-            image: image,
+            image: url,
             limit: limit,
             genre: genre,
           }),
@@ -106,9 +121,8 @@ export default function Form({ setPage }) {
           <input
             className="form"
             type="file"
-            value={image}
             onChange={(e) => {
-              setImage(e.target.value);
+              setImage(e.target.files[0]);
             }}
           />
         </label>{" "}
