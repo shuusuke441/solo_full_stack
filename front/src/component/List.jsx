@@ -52,8 +52,12 @@ export default function List({ setPage }) {
       <br />
       {list.map((item) => (
         <div className="problem" key={item.id}>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
+          <h3>
+            〜困り事〜
+            <br />
+            {item.title}
+          </h3>
+          <p>詳細内容：{item.description}</p>
           <p>依頼日：{new Date(item.created_at).toLocaleDateString()}</p>
           {/* new Date(item.created_at).toLocaleDateString() new Dateで日型にしてるから、.toLocalDeteString()が使える、 */}
           <p>

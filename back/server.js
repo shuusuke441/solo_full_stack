@@ -2,7 +2,6 @@ const cors = require("cors");
 const path = require("path"); //元々Nodeに入ってるもの
 const express = require("express"); //expressを持ってきてる
 const knex = require("./knex");
-const { readSync } = require("fs");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
