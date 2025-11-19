@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "http://localhost5173",
+    origin: `${process.env.CLIENT_URL}:${process.env.CLIENT_PORT}`,
   }) //ここでこのポートでのアクセスは許可することを書いている。
 );
 
