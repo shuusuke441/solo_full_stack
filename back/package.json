@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "cd ../front && npm install && npm run build && rm -rf ../back/public && cp -r dist ../back/public",
+    "build": "npm install && cd ../front && npm install && npm run build && rm -rf ../back/public && cp -r dist ../back/public",
     "db:migrate": "knex migrate:latest",
     "db:migrate-make": "knex migrate:make",
     "db:seed": "knex seed:run",
