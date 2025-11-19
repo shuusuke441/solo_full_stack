@@ -14,23 +14,25 @@ export default function Form({ setPage }) {
   }
 
   const handleAddProblem = async () => {
-    if (title === "" || description === "" || limit === "") return;
-    try {
-      await fetch("/api/problems", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: title,
-          description: description,
-          image: image,
-          limit: limit,
-        }),
-      });
-      resetForm();
-    } catch (error) {
-      console.error(error);
+    if (title === "" || description === "") return;
+    else {
+      try {
+        await fetch("/api/problems", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: title,
+            description: description,
+            image: image,
+            limit: limit,
+          }),
+        });
+        resetForm();
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 

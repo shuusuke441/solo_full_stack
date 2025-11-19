@@ -15,9 +15,30 @@ export default function List({ setPage }) {
       console.error(error);
     }
   };
+  // 依頼日時からの締め日までの残りの日時を計算する関数
+
+  function deadline(limit, now) {
+    if (!limit) return "期限はありません";
+    else {
+      const dayLimit = new Date(limit).toLocaleDateString();
+      const dayCreated = new Date(now).toLocaleDateString();
+      const deadlineSeconds = new Date(dayLimit) - new Date(dayCreated);
+      const deadlineDays = deadlineSeconds / (1000 * 60 * 60 * 24);
+      if (deadlineDays === 0) {
+        return "０日！！※ 今日が期限です！";
+      } else if (deadlineDays < 0) {
+        return `${Math.abs(deadlineDays)}日前に期限が過ぎた事案です`;
+      }
+      return `残り日数：${deadlineDays}日`;
+    }
+  }
 
   useEffect(() => {
     problemList();
+  }, []);
+
+  useEffect(() => {
+    deadline();
   }, []);
 
   return (
@@ -39,6 +60,7 @@ export default function List({ setPage }) {
             期限：
             {item.limit ? new Date(item.limit).toLocaleDateString() : "なし"}
           </p>
+          <p>{deadline(item.limit, item.created_at)}</p>
         </div>
       ))}
       <button
