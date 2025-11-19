@@ -2,11 +2,15 @@ import { useState, useEffect } from "react";
 
 export default function List({ setPage }) {
   const [list, setList] = useState([]);
+  const [genre, setGenre] = useState("");
+
+  //ドロップダウン用の要素たち
+  const genreList = ["その他", "PC", "設備", "JS", "Node.js", "knex.js"];
 
   //データの管理運営はこのコンポーネントでやりたい。だからここに書く。
   const problemList = async () => {
     try {
-      const res = await fetch("/api/problems");
+      const res = await fetch(`/api/problems?genre=${genre}`);
       const data = await res.json();
 
       console.log(data);
@@ -15,6 +19,7 @@ export default function List({ setPage }) {
       console.error(error);
     }
   };
+
   // 依頼日時からの締め日までの残りの日時を計算する関数
 
   function deadline(limit, now) {
@@ -35,7 +40,7 @@ export default function List({ setPage }) {
   //毎回ページがレンダリングされるたびに、一覧が更新される。
   useEffect(() => {
     problemList();
-  }, []);
+  }, [genre]);
   //同じように、日時が更新される。
   useEffect(() => {
     deadline();
@@ -44,6 +49,22 @@ export default function List({ setPage }) {
   return (
     <>
       <h1>困り事一覧</h1>
+      <label>
+        ジャンル選択：
+        <select
+          value={genre}
+          onChange={(e) => {
+            setGenre(e.target.value);
+          }}
+          id="pet-select"
+        >
+          {genreList.map((item, i) => (
+            <option value={item} key={i}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
       <p>
         ※ここは、いろんな困り事を一覧で見れるよ！
         <br />
@@ -60,6 +81,7 @@ export default function List({ setPage }) {
           <p>詳細内容：{item.description}</p>
           <p>依頼日：{new Date(item.created_at).toLocaleDateString()}</p>
           {/* new Date(item.created_at).toLocaleDateString() new Dateで日型にしてるから、.toLocalDeteString()が使える、 */}
+          <p>ジャンル：{item.genre}</p>
           <p>
             期限：
             {item.limit ? new Date(item.limit).toLocaleDateString() : "なし"}

@@ -13,11 +13,17 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, "/public"))); //静的ファイルを使うと示してる__dirnameは今のディレクトリを書いてる。だから読み込むのは、/public
-
+//path.join
 app.use(express.json());
 
 app.get("/api/problems", async (req, res) => {
-  const problemsList = await knex.select().from("problems");
+  let problemsList;
+  const { genre } = req.query;
+  if (genre) {
+    problemsList = await knex.select().from("problems").where("genre", genre);
+  } else {
+    problemsList = await knex.select().from("problems");
+  }
   res.json(problemsList);
 });
 
@@ -32,6 +38,7 @@ app.post("/api/problems", async (req, res) => {
       image: result.image,
       created_at: new Date(),
       limit: result.limit || null,
+      genre: result.genre,
     })
     .returning("*");
 

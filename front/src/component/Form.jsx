@@ -5,6 +5,9 @@ export default function Form({ setPage }) {
   const [description, setDiscription] = useState("");
   const [limit, setLimmit] = useState("");
   const [image, setImage] = useState("");
+  const [genre, setGenre] = useState("その他");
+
+  const genreList = ["その他", "PC", "設備", "JS", "Node.js", "knex.js"];
 
   function resetForm() {
     setTilte("");
@@ -27,6 +30,7 @@ export default function Form({ setPage }) {
             description: description,
             image: image,
             limit: limit,
+            genre: genre,
           }),
         });
         resetForm();
@@ -69,6 +73,23 @@ export default function Form({ setPage }) {
             }}
           ></textarea>
         </label>{" "}
+        <br />
+        <label>
+          ジャンル選択：
+          <select
+            value={genre}
+            onChange={(e) => {
+              setGenre(e.target.value);
+            }}
+            id="pet-select"
+          >
+            {genreList.map((item, i) => (
+              <option value={item} key={i}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
         <br />
         <label>
           期限：
