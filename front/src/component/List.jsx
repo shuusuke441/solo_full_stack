@@ -49,6 +49,13 @@ export default function List({ setPage }) {
   return (
     <>
       <h1>困り事一覧</h1>
+      <button
+        onClick={() => {
+          setPage("home");
+        }}
+      >
+        ホーム画面に戻る
+      </button>
       <label>
         ジャンル選択：
         <select
@@ -90,13 +97,6 @@ export default function List({ setPage }) {
           <p>{deadline(item.limit, item.created_at)}</p>
         </div>
       ))}
-      <button
-        onClick={() => {
-          setPage("home");
-        }}
-      >
-        ホーム画面に戻る
-      </button>
     </>
   );
 }

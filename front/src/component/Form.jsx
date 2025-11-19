@@ -22,15 +22,19 @@ export default function Form({ setPage }) {
     if (title === "" || description === "") return;
     else {
       try {
-        const key = import.meta.env.VITE_IMAGEBB_KEY;
         // console.log(key);
         const formData = new FormData();
-        formData.append("key", key);
+        formData.append("key", import.meta.env.VITE_IMAGEBB_KEY);
         formData.append("image", image === "" ? null : image);
-        const res = await fetch(`https://api.imgbb.com/1/upload?key=${key}`, {
-          method: "POST",
-          body: formData,
-        });
+        const res = await fetch(
+          `https://api.imgbb.com/1/upload?key=${
+            import.meta.env.VITE_IMAGEBB_KEY
+          }`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
         const data = await res.json();
         const url = data.data.url;
         // console.log(url);
