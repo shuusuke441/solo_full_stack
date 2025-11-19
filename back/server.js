@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: `${process.env.CLIENT_URL}:${process.env.CLIENT_PORT}`,
+    origin: `${process.env.CLIENT_URL}`,
   }) //ここでこのポートでのアクセスは許可することを書いている。
 );
 
