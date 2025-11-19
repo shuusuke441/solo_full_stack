@@ -25,7 +25,7 @@ export default function List({ setPage }) {
       const deadlineSeconds = new Date(dayLimit) - new Date(dayCreated);
       const deadlineDays = deadlineSeconds / (1000 * 60 * 60 * 24);
       if (deadlineDays === 0) {
-        return "０日！！※ 今日が期限です！";
+        return "期限まで０日！！※ 今日が期限です！";
       } else if (deadlineDays < 0) {
         return `${Math.abs(deadlineDays)}日前に期限が過ぎた事案です`;
       }
