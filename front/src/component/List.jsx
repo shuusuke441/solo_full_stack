@@ -37,6 +37,7 @@ export default function List({ setPage }) {
             期限：
             {item.limit ? new Date(item.limit).toLocaleDateString() : "なし"}
           </p>
+          <p>依頼日：{item.create_at}</p>
         </div>
       ))}
       <button

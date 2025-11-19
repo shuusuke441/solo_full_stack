@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js ",
     "dev": "nodemon server.js",
     "build": "npm install && cd ../front && npm install && npm run build && rm -rf ../back/public && cp -r dist ../back/public",
     "db:migrate": "knex migrate:latest",

@@ -8,7 +8,7 @@ exports.up = function (knex) {
     table.string("title").notNullable();
     table.text("description");
     table.text("image");
-    table.timestamps("created_at").defaultTo(knex.fn.now());
+    table.timestamp("created_at").defaultTo(knex.fn.now());
   });
 };
 
