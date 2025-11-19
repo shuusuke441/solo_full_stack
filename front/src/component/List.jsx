@@ -32,11 +32,11 @@ export default function List({ setPage }) {
       return `残り日数：${deadlineDays}日`;
     }
   }
-
+  //毎回ページがレンダリングされるたびに、一覧が更新される。
   useEffect(() => {
     problemList();
   }, []);
-
+  //同じように、日時が更新される。
   useEffect(() => {
     deadline();
   }, []);
