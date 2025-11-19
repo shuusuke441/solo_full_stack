@@ -24,7 +24,7 @@ module.exports = {
     client: "postgresql",
     connection: process.env.DATABASE_URL || {
       user: process.env.POSTGRES_USER || "postgres",
-      database: process.env.POSTGRES_DB || "ccpixels",
+      database: process.env.POSTGRES_DB || "kimu",
     },
     migrations: {
       directory: "./db/migrations",
