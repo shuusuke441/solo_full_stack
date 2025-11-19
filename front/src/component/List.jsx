@@ -33,11 +33,12 @@ export default function List({ setPage }) {
         <div className="problem" key={item.id}>
           <h3>{item.title}</h3>
           <p>{item.description}</p>
+          <p>依頼日：{new Date(item.created_at).toLocaleDateString()}</p>
+          {/* new Date(item.created_at).toLocaleDateString() new Dateで日型にしてるから、.toLocalDeteString()が使える、 */}
           <p>
             期限：
             {item.limit ? new Date(item.limit).toLocaleDateString() : "なし"}
           </p>
-          <p>依頼日：{item.create_at}</p>
         </div>
       ))}
       <button
