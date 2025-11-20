@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+body {
+  background-color: paleturquoise;
+}
 
 .logo {
   height: 6em;
@@ -41,16 +44,34 @@
   color: #888;
 }
 
-#form-set {
-}
-
 .problem {
+  background-color: azure;
   border: 1px solid;
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
 }
 
 .form {
   margin-bottom: 5px;
+}
+
+.form-input {
+  margin-bottom: 5px;
+  width: 150px;
+  height: 40px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.problem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }

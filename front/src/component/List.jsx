@@ -49,14 +49,8 @@ export default function List({ setPage }) {
   return (
     <>
       <h1>困り事一覧</h1>
-      <button
-        onClick={() => {
-          setPage("home");
-        }}
-      >
-        ホーム画面に戻る
-      </button>
-      <label>
+
+      <div>
         ジャンル選択：
         <select
           value={genre}
@@ -71,32 +65,41 @@ export default function List({ setPage }) {
             </option>
           ))}
         </select>
-      </label>
+      </div>
       <p>
         ※ここは、いろんな困り事を一覧で見れるよ！
         <br />
         自分の投稿だけ見ることもできるよ！
       </p>
+      <button
+        onClick={() => {
+          setPage("home");
+        }}
+      >
+        ホーム画面に戻る
+      </button>
       <br />
-      {list.map((item) => (
-        <div className="problem" key={item.id}>
-          <h3>
-            〜困り事〜
-            <br />
-            {item.title}
-          </h3>
-          <p>詳細内容：{item.description}</p>
-          <img src={item.image} alt="投稿されたイメージはありません"></img>
-          <p>依頼日：{new Date(item.created_at).toLocaleDateString()}</p>
-          {/* new Date(item.created_at).toLocaleDateString() new Dateで日型にしてるから、.toLocalDeteString()が使える、 */}
-          <p>ジャンル：{item.genre}</p>
-          <p>
-            期限：
-            {item.limit ? new Date(item.limit).toLocaleDateString() : "なし"}
-          </p>
-          <p>{deadline(item.limit, item.created_at)}</p>
-        </div>
-      ))}
+      <div className="card">
+        {list.map((item) => (
+          <div className="problem" key={item.id}>
+            <h3>
+              〜困り事〜
+              <br />
+              {item.title}
+            </h3>
+            <p>詳細内容：{item.description}</p>
+            <img src={item.image} alt="投稿されたイメージはありません"></img>
+            <p>依頼日：{new Date(item.created_at).toLocaleDateString()}</p>
+            {/* new Date(item.created_at).toLocaleDateString() new Dateで日型にしてるから、.toLocalDeteString()が使える、 */}
+            <p>ジャンル：{item.genre}</p>
+            <p>
+              期限：
+              {item.limit ? new Date(item.limit).toLocaleDateString() : "なし"}
+            </p>
+            <p>{deadline(item.limit, item.created_at)}</p>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

@@ -70,31 +70,31 @@ export default function Form({ setPage }) {
       </p>
 
       <div id="form-set">
-        <label>
+        <div>
           {" "}
           困りごとの題名：
           <input
-            className="form"
+            className="form-input"
             type="text"
             value={title}
             onChange={(e) => {
               setTilte(e.target.value);
             }}
           ></input>
-        </label>
+        </div>
         <br />
-        <label>
+        <div>
           詳細内容：
-          <textarea
-            className="form"
+          <input
+            className="form-input"
             value={description}
             onChange={(e) => {
               setDiscription(e.target.value);
             }}
-          ></textarea>
-        </label>{" "}
+          ></input>
+        </div>{" "}
         <br />
-        <label>
+        <div>
           ジャンル選択：
           <select
             value={genre}
@@ -109,9 +109,9 @@ export default function Form({ setPage }) {
               </option>
             ))}
           </select>
-        </label>
+        </div>
         <br />
-        <label>
+        <div>
           期限：
           <input
             className="form"
@@ -119,9 +119,9 @@ export default function Form({ setPage }) {
             value={limit}
             onChange={(e) => setLimmit(e.target.value)}
           />
-        </label>{" "}
+        </div>{" "}
         <br />
-        <label>
+        <div>
           添付：
           <input
             className="form"
@@ -130,7 +130,7 @@ export default function Form({ setPage }) {
               setImage(e.target.files[0]);
             }}
           />
-        </label>{" "}
+        </div>{" "}
         <br />
         <button onClick={handleAddProblem} className="form">
           投稿
