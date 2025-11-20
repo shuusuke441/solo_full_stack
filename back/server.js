@@ -3,7 +3,6 @@ const path = require("path"); //元々Nodeに入ってるもの
 const express = require("express"); //expressを持ってきてる
 const knex = require("./knex");
 const multer = require("multer");
-const FormDate = require("form-data");
 
 const app = express();
 const upload = multer();

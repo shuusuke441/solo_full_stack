@@ -24,11 +24,14 @@ export default function Form({ setPage }) {
       try {
         // console.log(key);
         const formData = new FormData();
-        formData.append("key", import.meta.env.VITE_IMAGEBB_KEY);
+        const key = "60f9fc37695283dfa9fb49cd47e8ebd1";
+        // formData.append("key", import.meta.env.VITE_IMAGEBB_KEY);
+        formData.append("key", key);
         formData.append("image", image === "" ? null : image);
         const res = await fetch(
           `https://api.imgbb.com/1/upload?key=${
-            import.meta.env.VITE_IMAGEBB_KEY
+            // import.meta.env.VITE_IMAGEBB_KEY
+            key
           }`,
           {
             method: "POST",
