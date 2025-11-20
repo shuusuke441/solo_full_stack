@@ -12,7 +12,11 @@ function App() {
     <>
       {page === "home" ? (
         <>
-          <h1>PC関係困りごと窓口</h1>
+          <h1>
+            KOMADO
+            <br />
+            PC関係困りごと窓口
+          </h1>
           <h2>使いたい機能を選んでね</h2>
           <button id="problem-form" onClick={() => setPage("form")}>
             {" "}

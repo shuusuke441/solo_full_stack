@@ -47,23 +47,27 @@
 
 ### インストール手順
 
-1. このリポジトリをクローン　 ➡️ https://github.com/shuusuke441/solo_full_stack#
-
-2. ディレクトリに移動
+1. ディレクトリに移動
 
    ```
    cd && mkdir /MyApp && cd /MyApp
    ```
 
-3. 必要なパッケージをインストール
+2. このリポジトリをクローン　 ➡️
 
    ```
-   npm install
+   https://github.com/shuusuke441/solo_full_stack#
    ```
 
-4. アプリを実行
+3. 環境から実行まで自動化スクリプト
+
    ```
-   npm run dev
+   npm run build && npm run db:migrate
+   ```
+
+4. アプリを実行(ローカル環境で動かせる)
+   ```
+   npm run dev && npm run start
    ```
 
 ## package.json の中身について
