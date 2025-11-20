@@ -5,7 +5,16 @@ export default function List({ setPage }) {
   const [genre, setGenre] = useState("");
 
   //ドロップダウン用の要素たち
-  const genreList = ["その他", "PC", "設備", "JS", "Node.js", "knex.js"];
+  const genreList = [
+    "その他",
+    "PC",
+    "設備",
+    "JS",
+    "Node.js",
+    "knex.js",
+    "powerApps",
+    "Excel",
+  ];
 
   //データの管理運営はこのコンポーネントでやりたい。だからここに書く。
   const problemList = async () => {

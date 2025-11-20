@@ -7,7 +7,16 @@ export default function Form({ setPage }) {
   const [image, setImage] = useState(null);
   const [genre, setGenre] = useState("その他");
 
-  const genreList = ["その他", "PC", "設備", "JS", "Node.js", "knex.js"];
+  const genreList = [
+    "その他",
+    "PC",
+    "設備",
+    "JS",
+    "Node.js",
+    "knex.js",
+    "powerApps",
+    "Excel",
+  ];
 
   //イメージBBの
 
