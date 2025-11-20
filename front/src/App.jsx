@@ -22,10 +22,10 @@ function App() {
             {" "}
             困り事一覧
           </button>
-          <button id="todo-list-privet" onClick={() => setPage("ToDo")}>
+          {/* <button id="todo-list-privet" onClick={() => setPage("ToDo")}>
             {" "}
             個人タスク管理画面
-          </button>
+          </button> */}
         </>
       ) : page === "form" ? (
         <Form setPage={setPage} />

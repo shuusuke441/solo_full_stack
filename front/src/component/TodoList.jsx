@@ -1,7 +1,7 @@
 export default function TodoList({ setPage }) {
   return (
     <>
-      <h1>MVP外だから後で作成します！</h1>
+      {/* <h1>MVP外だから後で作成します！</h1>
       <p>
         ※ここは、個人のタスク管理画面です。
         <br />
@@ -13,7 +13,7 @@ export default function TodoList({ setPage }) {
         }}
       >
         ホーム画面に戻る
-      </button>
+      </button> */}
     </>
   );
 }
