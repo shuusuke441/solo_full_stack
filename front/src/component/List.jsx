@@ -69,7 +69,7 @@ export default function List({ setPage }) {
       <p>
         ※ここは、いろんな困り事を一覧で見れるよ！
         <br />
-        自分の投稿だけ見ることもできるよ！
+        ジャンル別で見ることもできるよ！
       </p>
       <button
         onClick={() => {
