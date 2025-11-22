@@ -16,6 +16,7 @@ export default function Form({ setPage }) {
     "knex.js",
     "powerApps",
     "Excel",
+    "powerBI",
   ];
 
   //イメージBBの

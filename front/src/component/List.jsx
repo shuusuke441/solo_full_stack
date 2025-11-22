@@ -14,6 +14,7 @@ export default function List({ setPage }) {
     "knex.js",
     "powerApps",
     "Excel",
+    "powerBI",
   ];
 
   //データの管理運営はこのコンポーネントでやりたい。だからここに書く。
